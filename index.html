@@ -50,7 +50,7 @@
     </script> -->
 
     <!-- 04 -->
-    <div class="alert-box" id="alert">
+    <!-- <div class="alert-box" id="alert">
         알림창임
         <span class="box-colse" onclick="알림창('none')">
             X
@@ -65,6 +65,31 @@
         }
         알림창('block');
         알림창('none');
+
+    </script> -->
+
+    <!-- 05버튼 두개를 만들고 각각 다른 alert박스가 등장하게 만들기 -->
+    <div class="alert-box" id="alert">
+        아이디를 입력하세요.
+        <span class="box-colse" onclick="openBox( 'alert','none')">
+            X
+        </span>
+    </div>
+    <div class="alert-box" id="alert2">
+        비밀번호를 입력하세요.
+        <span class="box-colse" onclick="openBox('alert2','none')">
+            X
+        </span>
+    </div>
+    <button onclick="openBox( 'alert','block')">아이디 입력</button>
+    <button onclick="openBox('alert2','block')">비밀번호 입력</button>
+
+
+    <script>
+        function openBox(a, b) {
+            document.getElementById(a).style.display = b;
+        }
+
 
     </script>
 
