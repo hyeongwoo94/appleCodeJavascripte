@@ -1,0 +1,17 @@
+/* 02 */
+.alert-box {
+    background-color: skyblue;
+    padding: 20px;
+    color: white;
+    border-radius: 5px;
+    display: none;
+    position: relative;
+}
+
+.box-colse {
+    font-size: 30px;
+    position: absolute;
+    top: 10px;
+    right: 30px;
+    cursor: pointer;
+}
