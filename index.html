@@ -71,13 +71,13 @@
     <!-- 05버튼 두개를 만들고 각각 다른 alert박스가 등장하게 만들기 -->
     <div class="alert-box" id="alert">
         아이디를 입력하세요.
-        <span class="box-colse" onclick="openBox( 'alert','none')">
+        <span class="box-colse" id="close">
             X
         </span>
     </div>
     <div class="alert-box" id="alert2">
         비밀번호를 입력하세요.
-        <span class="box-colse" onclick="openBox('alert2','none')">
+        <span class="box-colse">
             X
         </span>
     </div>
@@ -90,6 +90,9 @@
             document.getElementById(a).style.display = b;
         }
 
+        document.getElementById('close').addEventListener('click', function () {
+            document.getElementById('alert').style.display = 'none';
+        });
 
     </script>
 
