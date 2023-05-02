@@ -22,14 +22,30 @@
         document.getElementById('hellow').style.fontSize = '50px';
     </script> -->
     <!-- 02 -->
-    <div class="alert-box" id="alert">
+    <!-- <div class="alert-box" id="alert">
         알림창임
         <span class="box-colse" onclick="document.getElementById('alert').style.display = 'none';">
             X
         </span>
     </div>
-    <button onclick="document.getElementById('alert').style.display = 'block';">버튼</button>
+    <button onclick="document.getElementById('alert').style.display = 'block';">버튼</button> -->
+    <!-- 03 -->
+    <div class="alert-box" id="alert">
+        알림창임
+        <span class="box-colse" onclick="closeBtn()">
+            X
+        </span>
+    </div>
+    <button onclick="openBtn()">버튼</button>
+
+
     <script>
+        function closeBtn() {
+            document.getElementById('alert').style.display = 'none';
+        }
+        function openBtn() {
+            document.getElementById('alert').style.display = 'block';
+        }
 
     </script>
 
