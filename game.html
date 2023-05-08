@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연산자테스트</title>
+</head>
+
+<body>
+    <h1>369게임</h1>
+    <form action="">
+        <input type="text" class="try">
+        <button class="btn">버튼</button>
+    </form>
+    <p>답: <span class="answer">33</span></p>
+    <script>
+        //버튼을 누르면 try의 value값이 3의 배수이면 박수를 내보내라.
+
+        document.querySelector('.btn').addEventListener('click', function (e) {
+            if (document.querySelector('.try').value % 3 == 0) {
+                alert('박수');
+                document.querySelector('.answer').innerHTML = '박수';
+                e.preventDefault();
+            } else {
+                alert('통과');
+                document.querySelector('.answer').innerHTML = '통과';
+                e.preventDefault();
+            }
+        });
+        function 삼육구게임(num) {
+            if (num % 9 == 0) {
+                console.log('박수x2');
+            } else if (num % 3 == 0) {
+                console.log('박수');
+            } else {
+                console.log('통과');
+            }
+        }
+        삼육구게임(3);
+        삼육구게임(9);
+        삼육구게임(11);
+
+        function 합격했냐(a, b) {
+            if (a + b >= 120 && a > 40 && b > 40) {
+                console.log('합격ㅊㅋ');
+            } else {
+                console.log('재등록');
+            }
+        }
+        합격했냐(70, 70);
+        합격했냐(30, 100);
+        합격했냐(50, 50);
+
+        function 삼육구응용(best) {
+            if (best % 10 == 3 || best % 10 == 6 || best % 10 == 9) {
+                console.log("짝")
+            } else {
+                console.log('걍숫자')
+            }
+        }
+        삼육구응용(13);
+        삼육구응용(2);
+        삼육구응용(3);
+        삼육구응용(4);
+        삼육구응용(5);
+        삼육구응용(6);
+        삼육구응용(7);
+        삼육구응용(8);
+        삼육구응용(9);
+        삼육구응용(10);
+        삼육구응용(33);
+        삼육구응용(333);
+        삼육구응용(3333);
+
+        function 응용(number) {
+            if (0 < number && number <= 100) {
+                alert('합격');
+            } else if (number < 0) {
+                alert('양수를 입력해라.');
+            } else {
+                alert('숫자입력해라.')
+            }
+        }
+        응용(-5);
+    </script>
+</body>
+
+</html>
