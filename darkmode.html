@@ -26,6 +26,18 @@
             </button>
         </div>
     </nav>
+    <div>
+        <button class="money">이자율 계산기</button>
+        <button class="coffee">최대 마실수 있는 커피양</button>
+    </div>
+    <div>
+        <h2>
+            간단한 퀴즈
+        </h2>
+        <p>태조 이성계가 태어난 년도는?</p>
+        <input type="text" class="answer">
+        <button id="send-answer">제출</button>
+    </div>
     <script>
 
         // badge  클릭 횟수가 홀수면 내부 글자를 light로 변경
@@ -45,7 +57,43 @@
                 document.querySelector('body').classList.remove('dark');
             }
         })
+        //이자율 계산기
+        document.querySelector('.money').addEventListener('click', function () {
+            const myMoney = prompt('입금할 금액 입력하시오');
+            if (myMoney < 50000) {
+                const result = Math.round(myMoney * 1.15 * 1.15);
+                alert(result);
+            } else {
+                const result = myMoney * 1.2 * 1.2;
+                alert(result);
+            }
+        })
+        //처음90주문 첫 리필 60 두번째 리필 40 (마신 커피의 3분의2를 리필해줌)
 
+        document.querySelector('.coffee').addEventListener('click', function () {
+            var firstDrink = prompt('첫주문의 커피양을 넣으세요.');
+            var numberAnswer = Number(firstDrink)
+            var scondDrink = Number(firstDrink * 2 / 3 * 1);
+            var threeDrink = Number(scondDrink * 2 / 3 * 1);
+            var totalCoffee = 0;
+            totalCoffee = numberAnswer + scondDrink + threeDrink;
+            alert(totalCoffee);
+        })
+        //간단한 퀴즈
+        // input에 값을 받아오기
+        //정답을 맞추면 성공, 세번 틀리면 멍청이
+        var num = 0;
+        document.querySelector('#send-answer').addEventListener('click', function () {
+            var ans = document.querySelector('.answer').value;
+            num++;
+            if (ans == 1335) {
+                alert('정답');
+            } else if (num >= 3 && ans != 1335) {
+                alert('병신');
+            } else if (ans != 1335) {
+                alert('다시입력하셈');
+            }
+        })
     </script>
 </body>
 
