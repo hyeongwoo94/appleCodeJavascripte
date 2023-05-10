@@ -51,24 +51,57 @@
             </li>
         </ul>
     </div>
-    <button class="btn-before btn">이전</button>
-    <button class="btn-1 btn">1</button>
-    <button class="btn-2 btn">2</button>
-    <button class="btn-3 btn">3</button>
-    <button class="btn-after btn">다음</button>
+    <div style="text-align: center;">
+        <button class="btn-before btn">이전</button>
+        <button class="btn-1 btn">1</button>
+        <button class="btn-2 btn">2</button>
+        <button class="btn-3 btn">3</button>
+        <button class="btn-after btn">다음</button>
+    </div>
     <script>
+        var countNum = 1;
         document.querySelector('.btn-1').addEventListener('click', function () {
-            document.querySelector('.slide_outbox').style.transform = 'translateX(00vw)';
-            document.querySelector('.slide_box')[0].classList.add = 'active';
+            document.querySelector('.slide_outbox').style.transform = 'translateX(0vw)';
+            countNum = 1;
+            console.log(countNum);
         })
         document.querySelector('.btn-2').addEventListener('click', function () {
             document.querySelector('.slide_outbox').style.transform = 'translateX(-100vw)';
+            countNum = 2;
+            console.log(countNum);
         })
         document.querySelector('.btn-3').addEventListener('click', function () {
             document.querySelector('.slide_outbox').style.transform = 'translateX(-200vw)';
+            countNum = 3;
+            console.log(countNum);
         })
         document.querySelector('.btn-before').addEventListener('click', function () {
-            document.querySelector('.slide_outbox').style.transform = 'translateX(-200vw)';
+            if (countNum == 1) {
+                alert("첫번째 이미지이빈다.");
+                console.log(countNum);
+            } else if (countNum == 2) {
+                document.querySelector('.slide_outbox').style.transform = 'translateX(00vw)';
+                countNum -= 1;
+                console.log(countNum);
+            } else if (countNum == 3) {
+                document.querySelector('.slide_outbox').style.transform = 'translateX(-100vw)';
+                countNum -= 1;
+                console.log(countNum);
+            }
+        })
+        document.querySelector('.btn-after').addEventListener('click', function () {
+            if (countNum == 1) {
+                document.querySelector('.slide_outbox').style.transform = 'translateX(-100vw)';
+                countNum += 1;
+                console.log(countNum);
+            } else if (countNum == 2) {
+                document.querySelector('.slide_outbox').style.transform = 'translateX(-200vw)';
+                countNum += 1;
+                console.log(countNum);
+            } else if (countNum == 3) {
+                alert("마지막 이미지이빈다.");
+                console.log(countNum);
+            }
         })
 
     </script>
