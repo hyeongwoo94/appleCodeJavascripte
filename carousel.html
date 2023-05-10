@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>carousel로 슬라이드 만들기</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    .slide_outbox {
+        width: 300vw;
+        display: flex;
+        transition: all 1s;
+    }
+
+    .slide_box {
+        width: 100vw;
+    }
+
+    .slide_box img {
+        width: 100%;
+    }
+
+    .btn {
+        font-size: 30px;
+        padding: 5px 10px;
+    }
+</style>
+
+<body>
+    <div style="overflow: hidden;">
+        <ul class="slide_outbox">
+            <li class="slide_box">
+                <img src="./img/car1.png" alt="">
+            </li>
+            <li class="slide_box">
+                <img src="./img/car2.png" alt="">
+            </li>
+            <li class="slide_box">
+                <img src="./img/car3.png" alt="">
+            </li>
+        </ul>
+    </div>
+    <button class="btn-before btn">이전</button>
+    <button class="btn-1 btn">1</button>
+    <button class="btn-2 btn">2</button>
+    <button class="btn-3 btn">3</button>
+    <button class="btn-after btn">다음</button>
+    <script>
+        document.querySelector('.btn-1').addEventListener('click', function () {
+            document.querySelector('.slide_outbox').style.transform = 'translateX(00vw)';
+            document.querySelector('.slide_box')[0].classList.add = 'active';
+        })
+        document.querySelector('.btn-2').addEventListener('click', function () {
+            document.querySelector('.slide_outbox').style.transform = 'translateX(-100vw)';
+        })
+        document.querySelector('.btn-3').addEventListener('click', function () {
+            document.querySelector('.slide_outbox').style.transform = 'translateX(-200vw)';
+        })
+        document.querySelector('.btn-before').addEventListener('click', function () {
+            document.querySelector('.slide_outbox').style.transform = 'translateX(-200vw)';
+        })
+
+    </script>
+</body>
+
+</html>
