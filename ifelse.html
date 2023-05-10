@@ -71,14 +71,33 @@
 
         // 전송버튼 누르면 저기 input에 입력한 값이 공백이면 알림창띄워주세요.
         // 조건문
+        // document.querySelector('.btn-primary').addEventListener('click', function (e) {
+        //     if (document.querySelector('.id_info').value == "") {
+        //         alert('아이디를 입력해주세요.');
+        //         e.preventDefault();
+        //     } else if (document.querySelector('.password_info').value == "") {
+        //         alert('비번을 입력해주세요.');
+        //         e.preventDefault();
+        //     } else if (document.querySelector('.password_info').value.length < 6) {
+        //         alert('6자 이상 써주세요.');
+        //         e.preventDefault();
+        //     }
+        // });
+
         document.querySelector('.btn-primary').addEventListener('click', function (e) {
-            if (document.querySelector('.id_info').value == "") {
+            var checkId = document.querySelector('.id_info').value;
+            var checkPassword = document.querySelector('.password_info').value;
+
+            if (checkId == "") {
                 alert('아이디를 입력해주세요.');
                 e.preventDefault();
-            } else if (document.querySelector('.password_info').value == "") {
+            } else if (checkPassword == "") {
                 alert('비번을 입력해주세요.');
                 e.preventDefault();
-            } else if (document.querySelector('.password_info').value.length < 6) {
+            } else if (/[A-Z]/.test(checkPassword) == false) {
+                alert('영어대문자 한개이상 쓰시오.');
+                e.preventDefault();
+            } else if (checkPassword.length < 6) {
                 alert('6자 이상 써주세요.');
                 e.preventDefault();
             }

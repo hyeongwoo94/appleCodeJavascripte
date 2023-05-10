@@ -12,17 +12,25 @@
 
 <body>
     <div class="alert alert-danger">
-        안녕
+        <span class="num">5</span>초후 사라집니다.
     </div>
     <script>
-        //몇초 후에 실행
-        // setTimeout(function () {
-        //     document.querySelector('.alert').style.display = 'none';
-        // }, 5000)
-        //몇초 마다 실행
-        setInterval(function () {
-            console.log('hi');
-        }, 1000)
+        //숫자가 5초에 걸쳐 1씩줄어들고 마지막에 전체 문장이 사라진다.
+        function allDelete() {
+            document.querySelector('.alert').style.display = "none";
+        }
+        //1초뒤에 숫자가 변경되어야한다.
+        var count = 5;
+        var asd = document.querySelector('.num');
+        function countTime() {
+            count -= 1;
+            if (count >= 0) {
+                asd.innerHTML = count;
+            }
+        }
+        setInterval(countTime, 1000);
+        setTimeout(allDelete, 5000);
+
     </script>
 </body>
 
