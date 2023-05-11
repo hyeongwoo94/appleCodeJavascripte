@@ -119,6 +119,36 @@
         })
 
     </script>
+    <script>
+        function vat(a) {
+            var num = (a * 1.1).toFixed(1);
+            return parseFloat(num);
+        }
+    </script>
+    <script>
+        function 함수(a, b) {
+            var min = a * 60 * 1000;
+            var sce = b * 1000;
+            return min + sce;
+        }
+        console.log(함수(1, 30));
+        console.log(함수(2, 10));
+    </script>
+    <script>
+        function 가격(a, b) {
+            if (b == true) {
+                var reslut = (a * 0.1);
+                return parseFloat((a - reslut - 1.5).toFixed(2));
+            } else {
+                var reslut = (a * 0.1);
+                console.log(reslut);
+                return parseFloat((a - reslut).toFixed(2));
+            }
+        }
+        console.log(가격(70, false));
+        console.log(가격(10, true));
+        console.log(가격(10.3, true));
+    </script>
 </body>
 
 </html>
