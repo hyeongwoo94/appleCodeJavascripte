@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>집에서</title>
+  </head>
+  <style>
+    .nav {
+      position: fixed;
+      z-index: 5;
+    }
+    .logo {
+      font-size: 30px;
+    }
+    .box {
+      width: 300px;
+      height: 100px;
+      overflow: scroll;
+    }
+    .line {
+      width: 0vw;
+      background-color: #333;
+      height: 2px;
+      transition: all 0.5s;
+    }
+  </style>
+  <body>
+    <nav class="nav">
+      <h1 class="logo">로고</h1>
+      <div class="line"></div>
+    </nav>
+    <div style="height: 1000px"></div>
+    <div class="box">
+      djskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdflj
+      djskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdflj
+      djskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdflj
+      djskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdflj
+      djskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdflj
+      djskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdfljdjskdflj
+    </div>
+    <script>
+      window.addEventListener("scroll", function () {
+        var 스크롤 = window.scrollY;
+        //console.log(window.scrollY);
+        if (스크롤 > 100) {
+          document.querySelector(".logo").style.fontSize = "15px";
+        } else {
+          document.querySelector(".logo").style.fontSize = "30px";
+        }
+      });
+      document.querySelector(".box").addEventListener("scroll", function () {
+        var 박스스크롤 = document.querySelector(".box").scrollTop;
+        var 실제높이 = document.querySelector(".box").scrollHeight;
+        var 높이 = document.querySelector(".box").clientHeight;
+        if (박스스크롤 + 높이 > 실제높이 - 10) {
+          alert("다 읽음");
+          return false;
+        }
+      });
+      window.addEventListener("scroll", function () {
+        var 전체높이 = document.querySelector("html").scrollTop;
+        var 스크롤 = window.scrollY;
+        console.log(스크롤);
+        if (스크롤 == 100) {
+          document.querySelector(".line").style.width = "30vw";
+        } else if (스크롤 == 200) {
+          document.querySelector(".line").style.width = "60vw";
+        } else if (스크롤 == 300) {
+          document.querySelector(".line").style.width = "90vw";
+        } else if (스크롤 >= 400) {
+          document.querySelector(".line").style.width = "1000vw";
+        }
+      });
+    </script>
+  </body>
+</html>
