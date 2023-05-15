@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스크롤이벤트기능</title>
+</head>
+<style>
+    .logo {
+        font-size: 30xp;
+    }
+
+    .lorem {
+        width: 200px;
+        overflow: scroll;
+        height: 100px;
+        padding: 10px;
+    }
+</style>
+
+<body>
+    <nav style="position: fixed; width: 100%; z-index: 5;">
+        <h2 class="logo">
+            나는로고이올시다.
+        </h2>
+    </nav>
+
+    <div style="height:2000px;">
+
+    </div>
+    <div class="lorem">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae voluptas voluptatum minus praesentium fugit
+        debitis at, laborum ipsa itaque placeat sit, excepturi eius. Nostrum perspiciatis, eligendi quae consectetur
+        praesentium exercitationem.
+    </div>
+    <script>
+        window.addEventListener('scroll', function () {
+            if (window.scrollY >= 100) {
+                document.querySelector('.logo').style.fontSize = '10px';
+            } else {
+                document.querySelector('.logo').style.fontSize = '30px';
+            }
+        })
+        document.querySelector('.lorem').addEventListener('scroll', function (e) {
+            var 스크롤 = document.querySelector('.lorem').scrollTop;
+            var 높이 = document.querySelector('.lorem').scrollHeight;
+            console.log(스크롤, 높이);
+            if (스크롤 + 100 >= 높이 - 10) {
+                alert("다읽엇당");
+                e.preventDefault();
+            }
+
+        })
+
+    </script>
+</body>
+
+</html>
