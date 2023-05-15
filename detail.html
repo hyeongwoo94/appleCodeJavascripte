@@ -85,8 +85,32 @@
   </script>
 
 
-
-
+  <form class="container my-5 form-group">
+    <p>상품선택</p>
+    <select class="form-select mt-2">
+      <option>모자</option>
+      <option>셔츠</option>
+    </select>
+    <select class="form-select mt-2 form-hide">
+      <option>95</option>
+      <option>100</option>
+      <option>105</option>
+    </select>
+  </form>
+  <style>
+    .form-hide {
+      display: none;
+    }
+  </style>
+  <script>
+    document.querySelectorAll('.form-select')[0].addEventListener('input', function () {
+      if (this.value == "셔츠") {
+        document.querySelectorAll('.form-select')[1].classList.remove('form-hide');
+      } else if (this != "셔츠") {
+        document.querySelectorAll('.form-select')[1].classList.add('form-hide');
+      }
+    })
+  </script>
 
 
 
