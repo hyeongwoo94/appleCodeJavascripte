@@ -72,7 +72,7 @@
     console.log(car[0]);
 
     // array object형
-    var car2 = { name: '소나타', price: 60000, color: 'white' };
+    var car2 = { name: '소나타', price: [60000, 10000, 30000], color: 'white' };
     //수정
     car2.name = '마세라티2';
     // 추가
@@ -81,7 +81,7 @@
     // 원하는 정보 하나만 꺼내기
     console.log(car2.name);
     console.log(car2['price']);
-    document.querySelector('.card').innerHTML = car2.name + '/' + car2.price;
+    document.querySelector('.card').innerHTML = car2.name + '/' + car2.price[2];
   </script>
 
 
