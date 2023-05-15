@@ -90,12 +90,14 @@
     <select class="form-select mt-2">
       <option>모자</option>
       <option>셔츠</option>
+      <option>바지</option>
     </select>
     <select class="form-select mt-2 form-hide">
       <option>95</option>
       <option>100</option>
       <option>105</option>
     </select>
+    <div class="test"></div>
   </form>
   <style>
     .form-hide {
@@ -103,17 +105,28 @@
     }
   </style>
   <script>
+    var a = `<option>28</option>
+              <option>30</option>
+              <option>32</option>`;
+    var b = `<option>95</option>
+    <option>100</option>
+    <option>105</option>`;
     document.querySelectorAll('.form-select')[0].addEventListener('input', function () {
       if (this.value == "셔츠") {
         document.querySelectorAll('.form-select')[1].classList.remove('form-hide');
-      } else if (this != "셔츠") {
+        document.querySelectorAll('.form-select')[1].innerHTML = '';
+        document.querySelectorAll('.form-select')[1].innerHTML = b;
+      } else if (this.value == '바지') {
+        document.querySelectorAll('.form-select')[1].classList.remove('form-hide');
+        document.querySelectorAll('.form-select')[1].innerHTML = '';
+        document.querySelectorAll('.form-select')[1].innerHTML = a;
+      } else {
         document.querySelectorAll('.form-select')[1].classList.add('form-hide');
       }
+
     })
+
   </script>
-
-
-
 
 
 
