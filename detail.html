@@ -93,9 +93,7 @@
       <option>바지</option>
     </select>
     <select class="form-select mt-2 form-hide">
-      <option>95</option>
-      <option>100</option>
-      <option>105</option>
+
     </select>
     <div class="test"></div>
   </form>
@@ -104,7 +102,7 @@
       display: none;
     }
   </style>
-  <script>
+  <!-- <script>
     var a = `<option>28</option>
               <option>30</option>
               <option>32</option>`;
@@ -120,6 +118,30 @@
         document.querySelectorAll('.form-select')[1].classList.remove('form-hide');
         document.querySelectorAll('.form-select')[1].innerHTML = '';
         document.querySelectorAll('.form-select')[1].innerHTML = a;
+      } else {
+        document.querySelectorAll('.form-select')[1].classList.add('form-hide');
+      }
+
+    })
+
+  </script> -->
+  <script>
+    // 데이터를 가져온것 (현재는 가짜)
+    var pants = [28, 30, 32];
+    var shirts = [95, 100, 105];
+    document.querySelectorAll('.form-select')[0].addEventListener('input', function () {
+      if (this.value == "셔츠") {
+        document.querySelectorAll('.form-select')[1].classList.remove('form-hide');
+        document.querySelectorAll('.form-select')[1].innerHTML = '';
+        shirts.forEach(function (data) {
+          document.querySelectorAll('.form-select')[1].insertAdjacentHTML('beforeend', `<option>${data}</option>`);
+        })
+      } else if (this.value == '바지') {
+        document.querySelectorAll('.form-select')[1].classList.remove('form-hide');
+        document.querySelectorAll('.form-select')[1].innerHTML = '';
+        pants.forEach(function (data) {
+          document.querySelectorAll('.form-select')[1].insertAdjacentHTML('beforeend', `<option>${data}</option>`);
+        })
       } else {
         document.querySelectorAll('.form-select')[1].classList.add('form-hide');
       }
