@@ -43,6 +43,7 @@
             </div> -->
         </div>
         <button class="btn">더보기</button>
+        <button class="sorting"> 금액별 정렬하기</button>
     </div>
 
     <script>
@@ -51,6 +52,14 @@
             { id: 1, price: 50000, title: 'Springfield Shirt' },
             { id: 2, price: 60000, title: 'Black Monastery' }
         ];
+
+        $('.sorting').click(function () {
+            products.sort(function (a, b) {
+                return a.price - b.price;
+            })
+            $('.row').html('');
+            템플릿(products);
+        })
         function 템플릿(a) {
             a.forEach(function (data, i) {
                 var box = `
