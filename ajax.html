@@ -42,60 +42,124 @@
                 <p>가격 : 70000</p>
             </div> -->
         </div>
-
+        <button class="btn">더보기</button>
+        <button class="word"> 이름역순</button>
+        <button class="word2"> 이름순</button>
+        <button class="min"> 60000이하</button>
+        <button class="reset"> 되돌리기</button>
+        <div>
+            <input class="user" type="text">
+        </div>
     </div>
-    <button class="btn">더보기</button>
-    <button class="sorting"> 금액별 정렬하기</button>
+
     <script>
         var products = [
             { id: 0, price: 70000, title: 'Blossom Dress' },
             { id: 1, price: 50000, title: 'Springfield Shirt' },
             { id: 2, price: 60000, title: 'Black Monastery' }
         ];
-        //가격이적은순서대로
-        $('.sorting').click(function () {
+
+        //처음 리스트 3개
+        products.forEach((data, i) => {
+            var 템플릿 = `
+            <div class="col-sm-4">
+                <img src="https://via.placeholder.com/600" class="w-100">
+                <h5>${data.title}</h5>
+                <p>가격 : ${data.price}</p>
+            </div>
+        `;
+            document.querySelector('.row').insertAdjacentHTML('beforeend', 템플릿);
+
+
+        })
+
+        //상품명을 역순 버튼
+        document.querySelector('.word').addEventListener('click', function () {
+            document.querySelector('.row').innerHTML = '';
             products.sort(function (a, b) {
-                return a.price - b.price;
+                return a.title > b.title ? -1 : 1;
             })
-            $('.row').html('');
-            템플릿(products);
-        })
-        function 템플릿(a) {
-            a.forEach(function (data, i) {
-                var box = `
-                <div class="col-sm-4">
-                    <img src="https://via.placeholder.com/600" class="w-100">
-                    <h5>${a[i].title}</h5>
-                    <p>가격 : ${a[i].price}</p>
-                </div>`;
-                $('.row').append(box);
+            products.forEach((data, i) => {
+                var 템플릿 = `
+                        <div class="col-sm-4">
+                            <img src="https://via.placeholder.com/600" class="w-100">
+                            <h5>${data.title}</h5>
+                            <p>가격 : ${data.price}</p>
+                        </div>
+                        `;
+                document.querySelector('.row').insertAdjacentHTML('beforeend', 템플릿);
             })
-        }
-        템플릿(products);
-
-        //리스트추가
-        var count = 0;
-        $('.btn').click(function () {
-            if (count == 0) {
-                $.get('https://codingapple1.github.io/js/more1.json').done(function (data) {
-                    var data = data;
-                    템플릿(data);
-                    count++;
-                })
-            } else if (count == 1) {
-                $.get('https://codingapple1.github.io/js/more2.json').done(function (data) {
-                    var data = data;
-                    템플릿(data);
-                    $('.btn').hide();
-                })
-            }
+        })//상품명을 가나다순 버튼
+        document.querySelector('.word2').addEventListener('click', function () {
+            document.querySelector('.row').innerHTML = '';
+            products.sort(function (a, b) {
+                return a.title - b.title ? 1 : -1;
+            })
+            products.forEach((data, i) => {
+                var 템플릿 = `
+                        <div class="col-sm-4">
+                            <img src="https://via.placeholder.com/600" class="w-100">
+                            <h5>${data.title}</h5>
+                            <p>가격 : ${data.price}</p>
+                        </div>
+                        `;
+                document.querySelector('.row').insertAdjacentHTML('beforeend', 템플릿);
+            })
+        })
+        //6만 이하 상품 보기 filter는 항상 새로운 변수에 array를 담아주기
+        document.querySelector('.min').addEventListener('click', function () {
+            document.querySelector('.row').innerHTML = '';
+            var minPrice = products.filter(function (a) {
+                return a.price < 60000;
+            })
+            minPrice.forEach((data, i) => {
+                var 템플릿 = `
+                        <div class="col-sm-4">
+                            <img src="https://via.placeholder.com/600" class="w-100">
+                            <h5>${data.title}</h5>
+                            <p>가격 : ${data.price}</p>
+                        </div>
+                        `;
+                document.querySelector('.row').insertAdjacentHTML('beforeend', 템플릿);
+            })
+        })//상품 가격을 유저가 입력후 필터작용
+        document.querySelector('.user').addEventListener('change', function () {
+            var userPrice = document.querySelector('.user').value;
+            document.querySelector('.row').innerHTML = '';
+            var userList = products.filter(function (a) {
+                return a.price <= userPrice;
+            })
+            userList.forEach((data, i) => {
+                var 템플릿 = `
+                        <div class="col-sm-4">
+                            <img src="https://via.placeholder.com/600" class="w-100">
+                            <h5>${data.title}</h5>
+                            <p>가격 : ${data.price}</p>
+                        </div>
+                        `;
+                document.querySelector('.row').insertAdjacentHTML('beforeend', 템플릿);
+            })
+        })
+        //되돌리기 버튼
+        document.querySelector('.reset').addEventListener('click', function () {
+            document.querySelector('.row').innerHTML = '';
+            var copyProducts = [
+                { id: 0, price: 70000, title: 'Blossom Dress' },
+                { id: 1, price: 50000, title: 'Springfield Shirt' },
+                { id: 2, price: 60000, title: 'Black Monastery' }
+            ];
+            copyProducts.forEach((data, i) => {
+                var 템플릿 = `
+                        <div class="col-sm-4">
+                            <img src="https://via.placeholder.com/600" class="w-100">
+                            <h5>${data.title}</h5>
+                            <p>가격 : ${data.price}</p>
+                        </div>
+                        `;
+                document.querySelector('.row').insertAdjacentHTML('beforeend', 템플릿);
+            })
         })
 
-        var 어레이 = [4, 5, 16, 77, 88];
-        var 조건어레이 = 어레이.filter((a) => {
-            return a > 16;
-        })
-        console.log(조건어레이);
     </script>
 </body>
 
