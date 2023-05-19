@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
     <meta charset="UTF-8">
@@ -26,7 +26,8 @@
         </div>
 
     </div>
-
+    <div class="result">
+    </div>
 
 
 
@@ -43,18 +44,30 @@
                 <img src="https://via.placeholder.com/600" class="w-100">
                 <h5 class="name" value="${data.title}">${data.title}</h5>
                 <p>가격 : ${data.price}</p>
-                <button class="btn btn-primary buy" >구매하기</button>
+                <button class="btn btn-primary buy" data-id='${i}'>구매하기</button>
             </div>
         `;
             document.querySelector('.row').insertAdjacentHTML('beforeend', 템플릿);
 
+        })
+        $('.buy').click(function (e) {
+            var title = $(e.target).siblings('h5').text();
+            if (localStorage.getItem('cart') != null) {
+                var 꺼낸거 = JSON.parse(localStorage.cart);
+                꺼낸거.push(title);
+                localStorage.setItem('cart', JSON.stringify(꺼낸거));
+
+                //}
+            } else {
+                localStorage.setItem('cart', JSON.stringify([title]));
+            }
 
         })
-        $('.col-sm-4').eq(0).$('.buy').click(function () {
-            var a = $('.buy').find('.name').attr('value');
-            console.log(a);
-            //localStorage.setItem('cart', a);
-        })
+        // var result = JSON.parse(localStorage.cart);
+        // console.log(result[0]);
+        // console.log(result[1]);
+        // console.log(result[2]);
+        // $('.result').html(result);
 
 
         // 구매하기 누르면 localStorage에 저장하기
