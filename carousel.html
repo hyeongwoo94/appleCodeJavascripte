@@ -20,7 +20,7 @@
     .slide_outbox {
         width: 300vw;
         display: flex;
-        transition: all 1s;
+        /* transition: all 1s; */
     }
 
     .slide_box {
@@ -148,6 +148,26 @@
         console.log(가격(70, false));
         console.log(가격(10, true));
         console.log(가격(10.3, true));
+    </script>
+    <script>
+        let 시작좌표 = 0;
+        let 누름 = false;
+        document.querySelectorAll('.slide_box')[0].addEventListener('mousedown', function (e) {
+            시작좌표 = e.clientX;
+            console.log(시작좌표);
+            누름 = true;
+        })
+        document.querySelectorAll('.slide_box')[0].addEventListener('mousemove', function (e) {
+            console.log(시작좌표 - e.clientX)
+            if (누름 == true) {
+                if (시작좌표 - e.clientX > 500) {
+                    document.querySelector('.slide_box').style.transform = 'translateX(-100vw)';
+                } else
+                    document.querySelector('.slide_box').style.marginLeft = `${e.clientX - 시작좌표}px`;
+            } else if (누름 == false) {
+                return
+            }
+        })
     </script>
 </body>
 
