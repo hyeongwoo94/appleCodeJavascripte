@@ -20,7 +20,7 @@
     .slide_outbox {
         width: 300vw;
         display: flex;
-        /* transition: all 1s; */
+        transition: all 1s;
     }
 
     .slide_box {
@@ -41,7 +41,7 @@
     <div style="overflow: hidden;">
         <ul class="slide_outbox">
             <li class="slide_box">
-                <img src="./img/car1.png" alt="">
+                <img src="./img/car1.png" alt="" draggable="false">
             </li>
             <li class="slide_box">
                 <img src="./img/car2.png" alt="">
@@ -149,23 +149,35 @@
         console.log(가격(10, true));
         console.log(가격(10.3, true));
     </script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
     <script>
-        let 시작좌표 = 0;
-        let 누름 = false;
-        document.querySelectorAll('.slide_box')[0].addEventListener('mousedown', function (e) {
-            시작좌표 = e.clientX;
-            console.log(시작좌표);
-            누름 = true;
+        var 시작좌표 = 0;
+        var 찍음 = false;
+        $('.slide_box').eq(0).on('mousedown', function (e) {
+            //1.내가 드래그한만크 박스도 왼쪽으로 이동
+            시작좌표 = e.clientX //2.마우스를 찍을때
+            찍음 = true;
         })
-        document.querySelectorAll('.slide_box')[0].addEventListener('mousemove', function (e) {
-            console.log(시작좌표 - e.clientX)
-            if (누름 == true) {
-                if (시작좌표 - e.clientX > 500) {
-                    document.querySelector('.slide_box').style.transform = 'translateX(-100vw)';
-                } else
-                    document.querySelector('.slide_box').style.marginLeft = `${e.clientX - 시작좌표}px`;
-            } else if (누름 == false) {
-                return
+        //3.움직인 만큼
+        $('.slide_box').eq(0).on('mousemove', function (e) {
+            //내가 드래그한만크 박스도 왼쪽으로 이동
+            //console.log(e.clientX - 시작좌표); //이동거리의 좌표
+            if (찍음 === true) {
+                $('.slide_outbox').css('transform', `translateX(${e.clientX - 시작좌표}px)`);
+                console.log(e.clientX - 시작좌표);
+                if (this = $('.slide_box').eq(0)) {
+
+                }
+
+            }
+        })
+        $('.slide_box').eq(0).on('mouseup', function (e) {
+            찍음 = false;
+            if ((e.clientX - 시작좌표) < -400) {
+                $('.slide_outbox').css('transform', `translateX(-100vw)`);
+            } else {
+                $('.slide_outbox').css('transform', `translateX(0vw)`);
             }
         })
     </script>
